@@ -1,0 +1,226 @@
+:root {
+    --b: #2f5bb7;
+    --ln: #c5cbd6;
+    --dk: #2b3a55;
+    --bg: #eaedf5;
+}
+* {
+    box-sizing: border-box;
+}
+body {
+    margin: 0;
+    background: #fff;
+    color: var(--dk);
+    font-family: system-ui, "Pretendard", sans-serif;
+}
+.app {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 12px;
+}
+h1 {
+    font-size: 18px;
+    margin: 4px 0 10px;
+}
+h1 small {
+    color: #889;
+    font-weight: 400;
+}
+.layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr);
+    gap: 20px;
+}
+.board-wrap {
+    position: relative;
+}
+.board {
+    display: grid;
+    grid-template-columns: repeat(9, minmax(0, 1fr));
+    grid-template-rows: repeat(9, minmax(0, 1fr));
+    border: 2px solid var(--dk);
+    aspect-ratio: 1;
+    user-select: none;
+}
+
+.cell {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    aspect-ratio: 1 / 1;
+    min-width: 0;
+    min-height: 0;
+    overflow: hidden;
+    border: 1px solid var(--ln);
+    font-size: clamp(18px, 4.5vw, 34px);
+    cursor: pointer;
+}
+.cell.br {
+    border-right: 2px solid var(--dk);
+}
+.cell.bb {
+    border-bottom: 2px solid var(--dk);
+}
+.fixed {
+    font-weight: 600;
+}
+.user {
+    color: var(--b);
+}
+.peer {
+    background: #e4e9f3;
+}
+.same {
+    background: #c3d6ea;
+}
+.sel {
+    background: #bbdefb;
+}
+.wrong {
+    color: #d33;
+    background: #fde8e8;
+}
+.notes {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 100%;
+    height: 100%;
+    font-size: clamp(8px, 1.6vw, 12px);
+    color: #667;
+    text-align: center;
+    align-items: center;
+}
+.cover {
+    position: absolute;
+    inset: 0;
+    background: #f3f4f8;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    border: 2px solid var(--dk);
+}
+.stats {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 8px;
+}
+.stats div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+.stats small {
+    font-size: 12px;
+    color: #778;
+}
+.stats b {
+    font-size: 16px;
+}
+.pause {
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    border: 0;
+    background: var(--bg);
+    color: #778;
+    cursor: pointer;
+}
+.tools {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+    margin: 14px 0 6px;
+}
+.tools button {
+    position: relative;
+    aspect-ratio: 1;
+    max-width: 64px;
+    justify-self: center;
+    width: 100%;
+    border-radius: 50%;
+    border: 0;
+    background: var(--bg);
+    color: var(--b);
+    cursor: pointer;
+}
+.tools button.on {
+    background: var(--b);
+    color: #fff;
+}
+.badge {
+    position: absolute;
+    top: -4px;
+    right: -6px;
+    font-size: 10px;
+    font-style: normal;
+    background: #9aa3b5;
+    color: #fff;
+    border-radius: 8px;
+    padding: 1px 5px;
+}
+.on .badge {
+    background: #1a3d8f;
+}
+.msg {
+    min-height: 20px;
+    margin: 0 0 6px;
+    font-size: 13px;
+    color: #c33;
+    text-align: center;
+}
+.pad {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+.pad button {
+    height: clamp(52px, 9vw, 88px);
+    font-size: 30px;
+    border: 0;
+    border-radius: 6px;
+    background: var(--bg);
+    color: var(--b);
+    cursor: pointer;
+}
+.pad button:active {
+    background: #d5dbec;
+}
+.new {
+    width: 100%;
+    margin-top: 10px;
+    height: 48px;
+    border: 0;
+    border-radius: 6px;
+    background: #5a7bc4;
+    color: #fff;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+}
+button:focus-visible {
+    outline: 3px solid #7aa2ff;
+}
+.modal {
+    position: fixed;
+    inset: 0;
+    background: #0006;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.dialog {
+    background: #fff;
+    padding: 24px;
+    border-radius: 10px;
+    width: min(320px, 90vw);
+    text-align: center;
+}
+@media (max-width: 760px) {
+    .layout {
+        grid-template-columns: 1fr;
+    }
+}
